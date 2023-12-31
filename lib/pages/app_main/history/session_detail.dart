@@ -26,6 +26,7 @@ class _SessionDetailState extends State<SessionDetail>
 
   @override
   void initState() {
+    print(widget.params);
     super.initState();
     _tabController = TabController(length: _tabs.length, vsync: this);
   }
@@ -287,18 +288,25 @@ class _SessionDetailState extends State<SessionDetail>
           );
   }
 
+  num _getTime(String key) {
+    var data = widget.params[key];
+    if (data == '') {
+      return 0;
+    }
+    return data;
+  }
+
   Widget _buildTimeDetail() {
     List<Widget> children = [];
-
-    num connectTime = widget.params['connect_time'] ?? 0;
-    num connectedTime = widget.params['connected_time'] ?? 0;
-    num handshakeTime = widget.params['handshake_time'].runtimeType == String ? 0 : widget.params['handshake_time'];
-    num requestEndTime = widget.params['request_end_time'] ?? 0;
-    num responseEndTime = widget.params['response_end_time'] ?? 0;
+    num connectTime = _getTime('connect_time');
+    num connectedTime = _getTime('connected_time');
+    num handshakeTime = _getTime('handshake_time');
+    num requestEndTime = _getTime('request_end_time');
+    num responseEndTime = _getTime('response_end_time');
 
     children.add(_detailItem('建立连接', content: '${((connectedTime - connectTime) * 1000).toInt()}ms'));
     children.add(_detailItem('TLS握手', content: '${handshakeTime == 0 ? 0 : ((handshakeTime - connectedTime) * 1000).toInt()}ms'));
-    children.add(_detailItem('发送请求', content: '${((requestEndTime - connectedTime) * 1000).toInt()}ms'));
+    children.add(_detailItem('发送请求', content: '${((requestEndTime - connectedTime) * 1000).toInt() < 0 ? 0 : ((requestEndTime - connectedTime) * 1000).toInt()}ms'));
     children.add(_detailItem('请求响应', content: '${((responseEndTime - requestEndTime) * 1000).toInt()}ms'));
 
     return Column(
