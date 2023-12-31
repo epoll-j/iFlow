@@ -50,7 +50,7 @@ class _CertState extends State<Cert> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "iflow HTTPS 根证书",
+                            "iFlow HTTPS 根证书",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
@@ -86,7 +86,7 @@ class _CertState extends State<Cert> {
               children: [
               const Text('两步完成证书安装及信任', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                 _buildStep("① 安装证书", "点击页面上方 “安装证书”，系统将弹出对话框询问是否允许下载配置描述文件，请点击允许。随后打开手机的设置 -> 已下载描述文件 -> 点击右上角安装 -> 输入手机的开机密码 -＞ 再次点击右上角安装 -> 安装。"),
-                _buildStep("② 信任证书", "打开手机的 设置 -> 通用-> 关于本机-> 页面最底部证书信任设置 -> 找到 Storm Sniffer CA -> 点击右侧的开关进行开启 -> 弹出的对话框选择 继续即可。")
+                _buildStep("② 信任证书", "打开手机的 设置 -> 通用-> 关于本机-> 页面最底部证书信任设置 -> 找到 iFlow Mobi CA -> 点击右侧的开关进行开启 -> 弹出的对话框选择 继续即可。")
             ],))
           ],
         ));
