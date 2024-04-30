@@ -20,7 +20,7 @@ struct HomePage: View {
             }
             .padding(.horizontal, 24)
             .padding(.top, 40)
-        }.background(Color(red: 241 / 255, green: 243 / 255, blue: 247 / 255).edgesIgnoringSafeArea([.horizontal, .bottom]))
+        }.background(Color.backgroundColor.edgesIgnoringSafeArea([.horizontal, .bottom]))
     }
 }
 

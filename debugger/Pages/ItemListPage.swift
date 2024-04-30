@@ -7,13 +7,22 @@
 
 import SwiftUI
 
+
+import SwiftUI
+
+struct DetailItem: Identifiable {
+    let id = UUID()
+    let name: String
+}
+
 struct ItemListPage: View {
     let items = ["1", "2", "3"]
+    
+    @State private var selectedItem: DetailItem?
     
     var body: some View {
         List {
             ForEach(items, id: \.self) { item in
-                
                 VStack(spacing: 10) {
                     HStack() {
                         Text("www.baidu.com").font(.body).bold()
@@ -37,7 +46,13 @@ struct ItemListPage: View {
                     }
                     .frame(maxWidth: .infinity)
                 }
+                .onTapGesture {
+                    self.selectedItem = DetailItem(name: "")
+                }
                 .frame(maxWidth: .infinity)
+                .sheet(item: self.$selectedItem) { item in
+                    ItemDetailPage()
+                }
             }
         }
     }
