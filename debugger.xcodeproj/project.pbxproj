@@ -61,7 +61,6 @@
 		46FC2E972C394DC400FD33B2 /* NIOEmbedded in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E962C394DC400FD33B2 /* NIOEmbedded */; };
 		46FC2E992C394E1700FD33B2 /* NIOConcurrencyHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E982C394E1700FD33B2 /* NIOConcurrencyHelpers */; };
 		46FC2E9C2C394E8300FD33B2 /* Atomics in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E9B2C394E8300FD33B2 /* Atomics */; };
-		46FC2E9E2C394EB000FD33B2 /* Atomics in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E9D2C394EB000FD33B2 /* Atomics */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,7 +142,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46FC2E9E2C394EB000FD33B2 /* Atomics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +342,6 @@
 			);
 			name = debugger;
 			packageProductDependencies = (
-				46FC2E9D2C394EB000FD33B2 /* Atomics */,
 			);
 			productName = debugger;
 			productReference = 46ABADBA2BC5827A00EF3295 /* debugger.app */;
@@ -910,11 +907,6 @@
 			productName = NIOConcurrencyHelpers;
 		};
 		46FC2E9B2C394E8300FD33B2 /* Atomics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 46FC2E9A2C394E8300FD33B2 /* XCRemoteSwiftPackageReference "swift-atomics" */;
-			productName = Atomics;
-		};
-		46FC2E9D2C394EB000FD33B2 /* Atomics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 46FC2E9A2C394E8300FD33B2 /* XCRemoteSwiftPackageReference "swift-atomics" */;
 			productName = Atomics;
