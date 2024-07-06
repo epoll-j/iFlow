@@ -22,7 +22,71 @@
 		46ABADC22BC5827A00EF3295 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ABADC12BC5827A00EF3295 /* Item.swift */; };
 		46ABADC42BC5827B00EF3295 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46ABADC32BC5827B00EF3295 /* Assets.xcassets */; };
 		46ABADC82BC5827B00EF3295 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46ABADC72BC5827B00EF3295 /* Preview Assets.xcassets */; };
+		46FC2E3E2C393FA400FD33B2 /* ProxyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E3D2C393FA400FD33B2 /* ProxyService.swift */; };
+		46FC2E432C393FA400FD33B2 /* ProxyService.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = 46FC2E3B2C393FA400FD33B2 /* ProxyService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		46FC2E512C3940D800FD33B2 /* ProtocolDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E4D2C3940D700FD33B2 /* ProtocolDetector.swift */; };
+		46FC2E522C3940D800FD33B2 /* Matcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E4E2C3940D800FD33B2 /* Matcher.swift */; };
+		46FC2E532C3940D800FD33B2 /* HTTPSMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E4F2C3940D800FD33B2 /* HTTPSMatcher.swift */; };
+		46FC2E542C3940D800FD33B2 /* HTTPMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E502C3940D800FD33B2 /* HTTPMatcher.swift */; };
+		46FC2E5A2C3940E500FD33B2 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E552C3940E500FD33B2 /* String+Extension.swift */; };
+		46FC2E5B2C3940E500FD33B2 /* Dictionary+Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E562C3940E500FD33B2 /* Dictionary+Json.swift */; };
+		46FC2E5C2C3940E500FD33B2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E572C3940E500FD33B2 /* Date+Extension.swift */; };
+		46FC2E5D2C3940E500FD33B2 /* Data+Gzip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E582C3940E500FD33B2 /* Data+Gzip.swift */; };
+		46FC2E5E2C3940E500FD33B2 /* Data+Compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E592C3940E500FD33B2 /* Data+Compression.swift */; };
+		46FC2E662C3940F100FD33B2 /* HTTPServerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E5F2C3940F000FD33B2 /* HTTPServerHandler.swift */; };
+		46FC2E672C3940F100FD33B2 /* TunnelProxyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E602C3940F100FD33B2 /* TunnelProxyHandler.swift */; };
+		46FC2E682C3940F100FD33B2 /* HTTPSHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E612C3940F100FD33B2 /* HTTPSHandler.swift */; };
+		46FC2E692C3940F100FD33B2 /* ChannelWatchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E622C3940F100FD33B2 /* ChannelWatchHandler.swift */; };
+		46FC2E6A2C3940F100FD33B2 /* ExchangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E632C3940F100FD33B2 /* ExchangeHandler.swift */; };
+		46FC2E6B2C3940F100FD33B2 /* HTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E642C3940F100FD33B2 /* HTTPHandler.swift */; };
+		46FC2E6C2C3940F100FD33B2 /* SSLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E652C3940F100FD33B2 /* SSLHandler.swift */; };
+		46FC2E722C3940F900FD33B2 /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E6D2C3940F900FD33B2 /* JSONSerializer.swift */; };
+		46FC2E732C3940F900FD33B2 /* ProxyContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E6E2C3940F900FD33B2 /* ProxyContext.swift */; };
+		46FC2E742C3940F900FD33B2 /* CertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E6F2C3940F900FD33B2 /* CertUtils.swift */; };
+		46FC2E752C3940F900FD33B2 /* ProxyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E702C3940F900FD33B2 /* ProxyRequest.swift */; };
+		46FC2E762C3940F900FD33B2 /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E712C3940F900FD33B2 /* NetworkInfo.swift */; };
+		46FC2E7A2C39410100FD33B2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E772C39410100FD33B2 /* Session.swift */; };
+		46FC2E7B2C39410100FD33B2 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E782C39410100FD33B2 /* Task.swift */; };
+		46FC2E7C2C39410100FD33B2 /* TaskRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E792C39410100FD33B2 /* TaskRule.swift */; };
+		46FC2E7F2C39411E00FD33B2 /* LocalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E7D2C39411E00FD33B2 /* LocalService.swift */; };
+		46FC2E802C39411E00FD33B2 /* CheckCert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2E7E2C39411E00FD33B2 /* CheckCert.swift */; };
+		46FC2E832C39447E00FD33B2 /* NIO in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E822C39447E00FD33B2 /* NIO */; };
+		46FC2E852C39447E00FD33B2 /* NIOCore in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E842C39447E00FD33B2 /* NIOCore */; };
+		46FC2E872C39447E00FD33B2 /* NIOHTTP1 in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E862C39447E00FD33B2 /* NIOHTTP1 */; };
+		46FC2E892C39447E00FD33B2 /* NIOTLS in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E882C39447E00FD33B2 /* NIOTLS */; };
+		46FC2E8C2C3944EF00FD33B2 /* NIOSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E8B2C3944EF00FD33B2 /* NIOSSL */; };
+		46FC2E902C394C0300FD33B2 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E8F2C394C0300FD33B2 /* SwiftyJSON */; };
+		46FC2E922C394C2C00FD33B2 /* NIOFoundationCompat in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E912C394C2C00FD33B2 /* NIOFoundationCompat */; };
+		46FC2E952C394C8500FD33B2 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E942C394C8500FD33B2 /* Reachability */; };
+		46FC2E972C394DC400FD33B2 /* NIOEmbedded in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E962C394DC400FD33B2 /* NIOEmbedded */; };
+		46FC2E992C394E1700FD33B2 /* NIOConcurrencyHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E982C394E1700FD33B2 /* NIOConcurrencyHelpers */; };
+		46FC2E9C2C394E8300FD33B2 /* Atomics in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E9B2C394E8300FD33B2 /* Atomics */; };
+		46FC2E9E2C394EB000FD33B2 /* Atomics in Frameworks */ = {isa = PBXBuildFile; productRef = 46FC2E9D2C394EB000FD33B2 /* Atomics */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		46FC2E412C393FA400FD33B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABADB22BC5827A00EF3295 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46FC2E3A2C393FA400FD33B2;
+			remoteInfo = ProxyService;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		46FC2E442C393FA400FD33B2 /* Embed ExtensionKit Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+				46FC2E432C393FA400FD33B2 /* ProxyService.appex in Embed ExtensionKit Extensions */,
+			);
+			name = "Embed ExtensionKit Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		465C43A22BDF3E82002EFB48 /* ParamDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParamDetail.swift; sourceTree = "<group>"; };
@@ -42,6 +106,36 @@
 		46ABADC32BC5827B00EF3295 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46ABADC52BC5827B00EF3295 /* debugger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = debugger.entitlements; sourceTree = "<group>"; };
 		46ABADC72BC5827B00EF3295 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		46FC2E3B2C393FA400FD33B2 /* ProxyService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = ProxyService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		46FC2E3D2C393FA400FD33B2 /* ProxyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyService.swift; sourceTree = "<group>"; };
+		46FC2E3F2C393FA400FD33B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46FC2E402C393FA400FD33B2 /* ProxyService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProxyService.entitlements; sourceTree = "<group>"; };
+		46FC2E4D2C3940D700FD33B2 /* ProtocolDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtocolDetector.swift; sourceTree = "<group>"; };
+		46FC2E4E2C3940D800FD33B2 /* Matcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matcher.swift; sourceTree = "<group>"; };
+		46FC2E4F2C3940D800FD33B2 /* HTTPSMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPSMatcher.swift; sourceTree = "<group>"; };
+		46FC2E502C3940D800FD33B2 /* HTTPMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMatcher.swift; sourceTree = "<group>"; };
+		46FC2E552C3940E500FD33B2 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		46FC2E562C3940E500FD33B2 /* Dictionary+Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Json.swift"; sourceTree = "<group>"; };
+		46FC2E572C3940E500FD33B2 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		46FC2E582C3940E500FD33B2 /* Data+Gzip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Gzip.swift"; sourceTree = "<group>"; };
+		46FC2E592C3940E500FD33B2 /* Data+Compression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Compression.swift"; sourceTree = "<group>"; };
+		46FC2E5F2C3940F000FD33B2 /* HTTPServerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPServerHandler.swift; sourceTree = "<group>"; };
+		46FC2E602C3940F100FD33B2 /* TunnelProxyHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelProxyHandler.swift; sourceTree = "<group>"; };
+		46FC2E612C3940F100FD33B2 /* HTTPSHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPSHandler.swift; sourceTree = "<group>"; };
+		46FC2E622C3940F100FD33B2 /* ChannelWatchHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelWatchHandler.swift; sourceTree = "<group>"; };
+		46FC2E632C3940F100FD33B2 /* ExchangeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeHandler.swift; sourceTree = "<group>"; };
+		46FC2E642C3940F100FD33B2 /* HTTPHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHandler.swift; sourceTree = "<group>"; };
+		46FC2E652C3940F100FD33B2 /* SSLHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSLHandler.swift; sourceTree = "<group>"; };
+		46FC2E6D2C3940F900FD33B2 /* JSONSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSerializer.swift; sourceTree = "<group>"; };
+		46FC2E6E2C3940F900FD33B2 /* ProxyContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxyContext.swift; sourceTree = "<group>"; };
+		46FC2E6F2C3940F900FD33B2 /* CertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertUtils.swift; sourceTree = "<group>"; };
+		46FC2E702C3940F900FD33B2 /* ProxyRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxyRequest.swift; sourceTree = "<group>"; };
+		46FC2E712C3940F900FD33B2 /* NetworkInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkInfo.swift; sourceTree = "<group>"; };
+		46FC2E772C39410100FD33B2 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		46FC2E782C39410100FD33B2 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		46FC2E792C39410100FD33B2 /* TaskRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRule.swift; sourceTree = "<group>"; };
+		46FC2E7D2C39411E00FD33B2 /* LocalService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalService.swift; sourceTree = "<group>"; };
+		46FC2E7E2C39411E00FD33B2 /* CheckCert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckCert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +143,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46FC2E9E2C394EB000FD33B2 /* Atomics in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46FC2E382C393FA400FD33B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46FC2E902C394C0300FD33B2 /* SwiftyJSON in Frameworks */,
+				46FC2E8C2C3944EF00FD33B2 /* NIOSSL in Frameworks */,
+				46FC2E872C39447E00FD33B2 /* NIOHTTP1 in Frameworks */,
+				46FC2E972C394DC400FD33B2 /* NIOEmbedded in Frameworks */,
+				46FC2E852C39447E00FD33B2 /* NIOCore in Frameworks */,
+				46FC2E922C394C2C00FD33B2 /* NIOFoundationCompat in Frameworks */,
+				46FC2E952C394C8500FD33B2 /* Reachability in Frameworks */,
+				46FC2E832C39447E00FD33B2 /* NIO in Frameworks */,
+				46FC2E9C2C394E8300FD33B2 /* Atomics in Frameworks */,
+				46FC2E892C39447E00FD33B2 /* NIOTLS in Frameworks */,
+				46FC2E992C394E1700FD33B2 /* NIOConcurrencyHelpers in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +204,9 @@
 			isa = PBXGroup;
 			children = (
 				46ABADBC2BC5827A00EF3295 /* debugger */,
+				46FC2E3C2C393FA400FD33B2 /* ProxyService */,
 				46ABADBB2BC5827A00EF3295 /* Products */,
+				46FC2E8D2C394B2C00FD33B2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				46ABADBA2BC5827A00EF3295 /* debugger.app */,
+				46FC2E3B2C393FA400FD33B2 /* ProxyService.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,6 +242,89 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		46FC2E3C2C393FA400FD33B2 /* ProxyService */ = {
+			isa = PBXGroup;
+			children = (
+				46FC2E4C2C3940C200FD33B2 /* Detector */,
+				46FC2E4B2C3940B500FD33B2 /* Extension */,
+				46FC2E4A2C3940AF00FD33B2 /* Handler */,
+				46FC2E492C3940AA00FD33B2 /* Utils */,
+				46FC2E482C3940A400FD33B2 /* Model */,
+				46FC2E3D2C393FA400FD33B2 /* ProxyService.swift */,
+				46FC2E7E2C39411E00FD33B2 /* CheckCert.swift */,
+				46FC2E7D2C39411E00FD33B2 /* LocalService.swift */,
+				46FC2E3F2C393FA400FD33B2 /* Info.plist */,
+				46FC2E402C393FA400FD33B2 /* ProxyService.entitlements */,
+			);
+			path = ProxyService;
+			sourceTree = "<group>";
+		};
+		46FC2E482C3940A400FD33B2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				46FC2E772C39410100FD33B2 /* Session.swift */,
+				46FC2E782C39410100FD33B2 /* Task.swift */,
+				46FC2E792C39410100FD33B2 /* TaskRule.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		46FC2E492C3940AA00FD33B2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				46FC2E6F2C3940F900FD33B2 /* CertUtils.swift */,
+				46FC2E6D2C3940F900FD33B2 /* JSONSerializer.swift */,
+				46FC2E712C3940F900FD33B2 /* NetworkInfo.swift */,
+				46FC2E6E2C3940F900FD33B2 /* ProxyContext.swift */,
+				46FC2E702C3940F900FD33B2 /* ProxyRequest.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		46FC2E4A2C3940AF00FD33B2 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				46FC2E622C3940F100FD33B2 /* ChannelWatchHandler.swift */,
+				46FC2E632C3940F100FD33B2 /* ExchangeHandler.swift */,
+				46FC2E642C3940F100FD33B2 /* HTTPHandler.swift */,
+				46FC2E5F2C3940F000FD33B2 /* HTTPServerHandler.swift */,
+				46FC2E612C3940F100FD33B2 /* HTTPSHandler.swift */,
+				46FC2E652C3940F100FD33B2 /* SSLHandler.swift */,
+				46FC2E602C3940F100FD33B2 /* TunnelProxyHandler.swift */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		46FC2E4B2C3940B500FD33B2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				46FC2E592C3940E500FD33B2 /* Data+Compression.swift */,
+				46FC2E582C3940E500FD33B2 /* Data+Gzip.swift */,
+				46FC2E572C3940E500FD33B2 /* Date+Extension.swift */,
+				46FC2E562C3940E500FD33B2 /* Dictionary+Json.swift */,
+				46FC2E552C3940E500FD33B2 /* String+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		46FC2E4C2C3940C200FD33B2 /* Detector */ = {
+			isa = PBXGroup;
+			children = (
+				46FC2E502C3940D800FD33B2 /* HTTPMatcher.swift */,
+				46FC2E4F2C3940D800FD33B2 /* HTTPSMatcher.swift */,
+				46FC2E4E2C3940D800FD33B2 /* Matcher.swift */,
+				46FC2E4D2C3940D700FD33B2 /* ProtocolDetector.swift */,
+			);
+			path = Detector;
+			sourceTree = "<group>";
+		};
+		46FC2E8D2C394B2C00FD33B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -136,15 +335,50 @@
 				46ABADB62BC5827A00EF3295 /* Sources */,
 				46ABADB72BC5827A00EF3295 /* Frameworks */,
 				46ABADB82BC5827A00EF3295 /* Resources */,
+				46FC2E442C393FA400FD33B2 /* Embed ExtensionKit Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46FC2E422C393FA400FD33B2 /* PBXTargetDependency */,
+			);
+			name = debugger;
+			packageProductDependencies = (
+				46FC2E9D2C394EB000FD33B2 /* Atomics */,
+			);
+			productName = debugger;
+			productReference = 46ABADBA2BC5827A00EF3295 /* debugger.app */;
+			productType = "com.apple.product-type.application";
+		};
+		46FC2E3A2C393FA400FD33B2 /* ProxyService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46FC2E472C393FA400FD33B2 /* Build configuration list for PBXNativeTarget "ProxyService" */;
+			buildPhases = (
+				46FC2E372C393FA400FD33B2 /* Sources */,
+				46FC2E382C393FA400FD33B2 /* Frameworks */,
+				46FC2E392C393FA400FD33B2 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = debugger;
-			productName = debugger;
-			productReference = 46ABADBA2BC5827A00EF3295 /* debugger.app */;
-			productType = "com.apple.product-type.application";
+			name = ProxyService;
+			packageProductDependencies = (
+				46FC2E822C39447E00FD33B2 /* NIO */,
+				46FC2E842C39447E00FD33B2 /* NIOCore */,
+				46FC2E862C39447E00FD33B2 /* NIOHTTP1 */,
+				46FC2E882C39447E00FD33B2 /* NIOTLS */,
+				46FC2E8B2C3944EF00FD33B2 /* NIOSSL */,
+				46FC2E8F2C394C0300FD33B2 /* SwiftyJSON */,
+				46FC2E912C394C2C00FD33B2 /* NIOFoundationCompat */,
+				46FC2E942C394C8500FD33B2 /* Reachability */,
+				46FC2E962C394DC400FD33B2 /* NIOEmbedded */,
+				46FC2E982C394E1700FD33B2 /* NIOConcurrencyHelpers */,
+				46FC2E9B2C394E8300FD33B2 /* Atomics */,
+			);
+			productName = ProxyService;
+			productReference = 46FC2E3B2C393FA400FD33B2 /* ProxyService.appex */;
+			productType = "com.apple.product-type.extensionkit-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -153,11 +387,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1510;
-				LastUpgradeCheck = 1510;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					46ABADB92BC5827A00EF3295 = {
 						CreatedOnToolsVersion = 15.1;
+					};
+					46FC2E3A2C393FA400FD33B2 = {
+						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
@@ -170,11 +407,19 @@
 				Base,
 			);
 			mainGroup = 46ABADB12BC5827A00EF3295;
+			packageReferences = (
+				46FC2E812C39447E00FD33B2 /* XCRemoteSwiftPackageReference "swift-nio" */,
+				46FC2E8A2C3944EF00FD33B2 /* XCRemoteSwiftPackageReference "swift-nio-ssl" */,
+				46FC2E8E2C394C0300FD33B2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				46FC2E932C394C8500FD33B2 /* XCRemoteSwiftPackageReference "Reachability" */,
+				46FC2E9A2C394E8300FD33B2 /* XCRemoteSwiftPackageReference "swift-atomics" */,
+			);
 			productRefGroup = 46ABADBB2BC5827A00EF3295 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				46ABADB92BC5827A00EF3295 /* debugger */,
+				46FC2E3A2C393FA400FD33B2 /* ProxyService */,
 			);
 		};
 /* End PBXProject section */
@@ -186,6 +431,13 @@
 			files = (
 				46ABADC82BC5827B00EF3295 /* Preview Assets.xcassets in Resources */,
 				46ABADC42BC5827B00EF3295 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46FC2E392C393FA400FD33B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +464,49 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		46FC2E372C393FA400FD33B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46FC2E5D2C3940E500FD33B2 /* Data+Gzip.swift in Sources */,
+				46FC2E742C3940F900FD33B2 /* CertUtils.swift in Sources */,
+				46FC2E722C3940F900FD33B2 /* JSONSerializer.swift in Sources */,
+				46FC2E7C2C39410100FD33B2 /* TaskRule.swift in Sources */,
+				46FC2E532C3940D800FD33B2 /* HTTPSMatcher.swift in Sources */,
+				46FC2E542C3940D800FD33B2 /* HTTPMatcher.swift in Sources */,
+				46FC2E5B2C3940E500FD33B2 /* Dictionary+Json.swift in Sources */,
+				46FC2E682C3940F100FD33B2 /* HTTPSHandler.swift in Sources */,
+				46FC2E6A2C3940F100FD33B2 /* ExchangeHandler.swift in Sources */,
+				46FC2E662C3940F100FD33B2 /* HTTPServerHandler.swift in Sources */,
+				46FC2E3E2C393FA400FD33B2 /* ProxyService.swift in Sources */,
+				46FC2E522C3940D800FD33B2 /* Matcher.swift in Sources */,
+				46FC2E5C2C3940E500FD33B2 /* Date+Extension.swift in Sources */,
+				46FC2E7F2C39411E00FD33B2 /* LocalService.swift in Sources */,
+				46FC2E6B2C3940F100FD33B2 /* HTTPHandler.swift in Sources */,
+				46FC2E752C3940F900FD33B2 /* ProxyRequest.swift in Sources */,
+				46FC2E762C3940F900FD33B2 /* NetworkInfo.swift in Sources */,
+				46FC2E802C39411E00FD33B2 /* CheckCert.swift in Sources */,
+				46FC2E5A2C3940E500FD33B2 /* String+Extension.swift in Sources */,
+				46FC2E7B2C39410100FD33B2 /* Task.swift in Sources */,
+				46FC2E672C3940F100FD33B2 /* TunnelProxyHandler.swift in Sources */,
+				46FC2E5E2C3940E500FD33B2 /* Data+Compression.swift in Sources */,
+				46FC2E692C3940F100FD33B2 /* ChannelWatchHandler.swift in Sources */,
+				46FC2E7A2C39410100FD33B2 /* Session.swift in Sources */,
+				46FC2E512C3940D800FD33B2 /* ProtocolDetector.swift in Sources */,
+				46FC2E732C3940F900FD33B2 /* ProxyContext.swift in Sources */,
+				46FC2E6C2C3940F100FD33B2 /* SSLHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		46FC2E422C393FA400FD33B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46FC2E3A2C393FA400FD33B2 /* ProxyService */;
+			targetProxy = 46FC2E412C393FA400FD33B2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		46ABADC92BC5827B00EF3295 /* Debug */ = {
@@ -249,6 +543,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -310,6 +605,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -332,11 +628,13 @@
 		46ABADCC2BC5827B00EF3295 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = debugger/debugger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"debugger/Preview Content\"";
 				DEVELOPMENT_TEAM = FVLFR9QYGC;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -372,11 +670,13 @@
 		46ABADCD2BC5827B00EF3295 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = debugger/debugger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"debugger/Preview Content\"";
 				DEVELOPMENT_TEAM = FVLFR9QYGC;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -409,6 +709,80 @@
 			};
 			name = Release;
 		};
+		46FC2E452C393FA400FD33B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ProxyService/ProxyService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = FVLFR9QYGC;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ProxyService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ProxyService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.iflow.app.debugger.ProxyService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		46FC2E462C393FA400FD33B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ProxyService/ProxyService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = FVLFR9QYGC;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ProxyService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ProxyService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.iflow.app.debugger.ProxyService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -430,7 +804,122 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		46FC2E472C393FA400FD33B2 /* Build configuration list for PBXNativeTarget "ProxyService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46FC2E452C393FA400FD33B2 /* Debug */,
+				46FC2E462C393FA400FD33B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		46FC2E812C39447E00FD33B2 /* XCRemoteSwiftPackageReference "swift-nio" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-nio.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.68.0;
+			};
+		};
+		46FC2E8A2C3944EF00FD33B2 /* XCRemoteSwiftPackageReference "swift-nio-ssl" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-nio-ssl.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.27.0;
+			};
+		};
+		46FC2E8E2C394C0300FD33B2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+		46FC2E932C394C8500FD33B2 /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tonymillion/Reachability";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.7.5;
+			};
+		};
+		46FC2E9A2C394E8300FD33B2 /* XCRemoteSwiftPackageReference "swift-atomics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-atomics.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		46FC2E822C39447E00FD33B2 /* NIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46FC2E812C39447E00FD33B2 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIO;
+		};
+		46FC2E842C39447E00FD33B2 /* NIOCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46FC2E812C39447E00FD33B2 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOCore;
+		};
+		46FC2E862C39447E00FD33B2 /* NIOHTTP1 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46FC2E812C39447E00FD33B2 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOHTTP1;
+		};
+		46FC2E882C39447E00FD33B2 /* NIOTLS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46FC2E812C39447E00FD33B2 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOTLS;
+		};
+		46FC2E8B2C3944EF00FD33B2 /* NIOSSL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46FC2E8A2C3944EF00FD33B2 /* XCRemoteSwiftPackageReference "swift-nio-ssl" */;
+			productName = NIOSSL;
+		};
+		46FC2E8F2C394C0300FD33B2 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46FC2E8E2C394C0300FD33B2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		46FC2E912C394C2C00FD33B2 /* NIOFoundationCompat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46FC2E812C39447E00FD33B2 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOFoundationCompat;
+		};
+		46FC2E942C394C8500FD33B2 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46FC2E932C394C8500FD33B2 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
+		46FC2E962C394DC400FD33B2 /* NIOEmbedded */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46FC2E812C39447E00FD33B2 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOEmbedded;
+		};
+		46FC2E982C394E1700FD33B2 /* NIOConcurrencyHelpers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46FC2E812C39447E00FD33B2 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOConcurrencyHelpers;
+		};
+		46FC2E9B2C394E8300FD33B2 /* Atomics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46FC2E9A2C394E8300FD33B2 /* XCRemoteSwiftPackageReference "swift-atomics" */;
+			productName = Atomics;
+		};
+		46FC2E9D2C394EB000FD33B2 /* Atomics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46FC2E9A2C394E8300FD33B2 /* XCRemoteSwiftPackageReference "swift-atomics" */;
+			productName = Atomics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 46ABADB22BC5827A00EF3295 /* Project object */;
 }

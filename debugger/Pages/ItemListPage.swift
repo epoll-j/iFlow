@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-
-import SwiftUI
-
 struct DetailItem: Identifiable {
     let id = UUID()
     let name: String
