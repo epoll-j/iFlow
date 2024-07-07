@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 import UIKit
-import ProxyService
+//import ProxyService
 
 @main
 struct debuggerApp: App {
