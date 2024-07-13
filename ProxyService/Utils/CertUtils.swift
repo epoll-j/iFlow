@@ -82,7 +82,7 @@ public class CertUtils: NSObject {
         CNIOBoringSSL_X509_NAME_add_entry_by_txt(subject, "O", MBSTRING_ASC, "Tomduck", -1, -1, 0);
         CNIOBoringSSL_X509_NAME_add_entry_by_txt(subject, "OU", MBSTRING_ASC, "", -1, -1, 0);
         CNIOBoringSSL_X509_NAME_add_entry_by_txt(subject, "CN", MBSTRING_ASC, host, -1, -1, 0);
-
+        
         var serial = randomSerialNumber()
         CNIOBoringSSL_X509_set_serialNumber(x, &serial)
         
@@ -100,7 +100,7 @@ public class CertUtils: NSObject {
         
         CNIOBoringSSL_X509_set_pubkey(x, pkey)
         
-//        CNIOBoringSSL_PEM_read_bio_X509(cert, nil, nil, nil)
+        //        CNIOBoringSSL_PEM_read_bio_X509(cert, nil, nil, nil)
         
         CNIOBoringSSL_X509_set_issuer_name(x, CNIOBoringSSL_X509_get_subject_name(_ref()!))
         CNIOBoringSSL_X509_set_subject_name(x, subject)
@@ -119,7 +119,7 @@ public class CertUtils: NSObject {
         // 确保内存安全，创建 Data 对象，并释放分配的内存
         let certData = Data(bytes: derBytesPointer!, count: Int(derLength))
         CNIOBoringSSL_OPENSSL_free(derBytesPointer)
-
+        
         let cert = try! NIOSSLCertificate(bytes: Array(certData), format: .der)
         CNIOBoringSSL_X509_free(x)
         
@@ -129,11 +129,11 @@ public class CertUtils: NSObject {
     private static func _ref() -> OpaquePointer? {
         let ref = cert.withUnsafeBytes { (ptr) -> OpaquePointer? in
             let bio = CNIOBoringSSL_BIO_new_mem_buf(ptr.baseAddress, ptr.count)!
-
+            
             defer {
                 CNIOBoringSSL_BIO_free(bio)
             }
-
+            
             return CNIOBoringSSL_PEM_read_bio_X509(bio, nil, nil, nil)
         }
         return ref
@@ -146,13 +146,13 @@ public class CertUtils: NSObject {
         defer {
             close(fd)
         }
-
+        
         var readBytes = Array.init(repeating: UInt8(0), count: bytesToRead)
         let readCount = readBytes.withUnsafeMutableBytes {
             return read(fd, $0.baseAddress, bytesToRead)
         }
         precondition(readCount == bytesToRead)
-
+        
         // Our 20-byte number needs to be converted into an integer. This is
         // too big for Swift's numbers, but BoringSSL can handle it fine.
         let bn = CNIOBoringSSL_BN_new()
@@ -163,15 +163,15 @@ public class CertUtils: NSObject {
         _ = readBytes.withUnsafeBufferPointer {
             CNIOBoringSSL_BN_bin2bn($0.baseAddress, $0.count, bn)
         }
-
+        
         // We want to bitshift this right by 1 bit to ensure it's smaller than
         // 2^159.
         CNIOBoringSSL_BN_rshift1(bn, bn)
-
+        
         // Now we can turn this into our ASN1_INTEGER.
         var asn1int = ASN1_INTEGER()
         CNIOBoringSSL_BN_to_ASN1_INTEGER(bn, &asn1int)
-
+        
         return asn1int
     }
     

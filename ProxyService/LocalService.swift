@@ -33,12 +33,12 @@ public class LocalService {
     
     @objc func reachabilityChanged(note: Notification) {
         let reachability = note.object as! Reachability
-//        switch reachability.connection {
-//        case .wifi, .cellular:
-//            runAgain()
-//        case .unavailable:
-//            close()
-//        }
+        //        switch reachability.connection {
+        //        case .wifi, .cellular:
+        //            runAgain()
+        //        case .unavailable:
+        //            close()
+        //        }
     }
     
     deinit {
@@ -90,7 +90,7 @@ public class LocalService {
             print("LocalHTTPServer run failured !")
             return
         }
-
+        
         runLocal()
     }
     

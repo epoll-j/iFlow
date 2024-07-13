@@ -16,7 +16,7 @@ public final class ProtocolDetector: ChannelInboundHandler, RemovableChannelHand
     private var buf:ByteBuffer?
     
     private var index:Int = 0 //
-
+    
     private let matcherList: [Matcher]
     public var task: Task
     
@@ -31,7 +31,7 @@ public final class ProtocolDetector: ChannelInboundHandler, RemovableChannelHand
             if (isLocal && task.localEnable == 0) || (!isLocal && task.wifiEnable == 0) {
                 context.flush()
                 context.close(promise: nil)
-
+                
                 return
             }
         }
@@ -59,7 +59,7 @@ public final class ProtocolDetector: ChannelInboundHandler, RemovableChannelHand
     
     public func userInboundEventTriggered(context: ChannelHandlerContext, event: Any) {
         print("userInboundEventTriggered:\(event)")
-//        context.channel.
+        //        context.channel.
     }
     
     public func errorCaught(context: ChannelHandlerContext, error: Error) {

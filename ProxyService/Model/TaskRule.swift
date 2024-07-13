@@ -60,7 +60,7 @@ public class TaskRule {
     
     
     func redirect(ignore: Bool, request: ProxyRequest) -> (String, Int) {
-//        return ("ffapi.ude.alibaba.net", 80)
+        //        return ("ffapi.ude.alibaba.net", 80)
         
         if (ignore) {
             return (request.host, request.port)

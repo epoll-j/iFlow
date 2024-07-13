@@ -47,13 +47,13 @@ public extension String{
     func isIP() -> Bool {
         var ipv4Addr = in_addr()
         var ipv6Addr = in6_addr()
-
+        
         return self.withCString { ptr in
             return inet_pton(AF_INET, ptr, &ipv4Addr) == 1 ||
-                   inet_pton(AF_INET6, ptr, &ipv6Addr) == 1
+            inet_pton(AF_INET6, ptr, &ipv6Addr) == 1
         }
     }
-
+    
     func toByteBuffer(_ limit: Int = 2048) -> [ByteBuffer] {
         var bufferArray: [ByteBuffer] = []
         let strArr = self.toArray(by: limit)

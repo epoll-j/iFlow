@@ -12,11 +12,11 @@ import Foundation
 public class JSONSerializer {
     
     /**
-    Errors that indicates failures of JSONSerialization
-    - JsonIsNotDictionary:    -
-    - JsonIsNotArray:            -
-    - JsonIsNotValid:            -
-    */
+     Errors that indicates failures of JSONSerialization
+     - JsonIsNotDictionary:    -
+     - JsonIsNotArray:            -
+     - JsonIsNotValid:            -
+     */
     public enum JSONSerializerError: Error {
         case jsonIsNotDictionary
         case jsonIsNotArray
@@ -25,11 +25,11 @@ public class JSONSerializer {
     
     //http://stackoverflow.com/questions/30480672/how-to-convert-a-json-string-to-a-dictionary
     /**
-    Tries to convert a JSON string to a NSDictionary. NSDictionary can be easier to work with, and supports string bracket referencing. E.g. personDictionary["name"].
-    - parameter jsonString:    JSON string to be converted to a NSDictionary.
-    - throws: Throws error of type JSONSerializerError. Either JsonIsNotValid or JsonIsNotDictionary. JsonIsNotDictionary will typically be thrown if you try to parse an array of JSON objects.
-    - returns: A NSDictionary representation of the JSON string.
-    */
+     Tries to convert a JSON string to a NSDictionary. NSDictionary can be easier to work with, and supports string bracket referencing. E.g. personDictionary["name"].
+     - parameter jsonString:    JSON string to be converted to a NSDictionary.
+     - throws: Throws error of type JSONSerializerError. Either JsonIsNotValid or JsonIsNotDictionary. JsonIsNotDictionary will typically be thrown if you try to parse an array of JSON objects.
+     - returns: A NSDictionary representation of the JSON string.
+     */
     public static func toDictionary(_ jsonString: String) throws -> NSDictionary {
         if let dictionary = try jsonToAnyObject(jsonString) as? NSDictionary {
             return dictionary
@@ -39,11 +39,11 @@ public class JSONSerializer {
     }
     
     /**
-    Tries to convert a JSON string to a NSArray. NSArrays can be iterated and each item in the array can be converted to a NSDictionary.
-    - parameter jsonString:    The JSON string to be converted to an NSArray
-    - throws: Throws error of type JSONSerializerError. Either JsonIsNotValid or JsonIsNotArray. JsonIsNotArray will typically be thrown if you try to parse a single JSON object.
-    - returns: NSArray representation of the JSON objects.
-    */
+     Tries to convert a JSON string to a NSArray. NSArrays can be iterated and each item in the array can be converted to a NSDictionary.
+     - parameter jsonString:    The JSON string to be converted to an NSArray
+     - throws: Throws error of type JSONSerializerError. Either JsonIsNotValid or JsonIsNotArray. JsonIsNotArray will typically be thrown if you try to parse a single JSON object.
+     - returns: NSArray representation of the JSON objects.
+     */
     public static func toArray(_ jsonString: String) throws -> NSArray {
         if let array = try jsonToAnyObject(jsonString) as? NSArray {
             return array
@@ -53,11 +53,11 @@ public class JSONSerializer {
     }
     
     /**
-    Tries to convert a JSON string to AnyObject. AnyObject can then be casted to either NSDictionary or NSArray.
-    - parameter jsonString:    JSON string to be converted to AnyObject
-    - throws: Throws error of type JSONSerializerError.
-    - returns: Returns the JSON string as AnyObject
-    */
+     Tries to convert a JSON string to AnyObject. AnyObject can then be casted to either NSDictionary or NSArray.
+     - parameter jsonString:    JSON string to be converted to AnyObject
+     - throws: Throws error of type JSONSerializerError.
+     - returns: Returns the JSON string as AnyObject
+     */
     fileprivate static func jsonToAnyObject(_ jsonString: String) throws -> Any? {
         var any: Any?
         
@@ -73,12 +73,12 @@ public class JSONSerializer {
         }
         return any
     }
-
+    
     /**
-    Generates the JSON representation given any custom object of any custom class. Inherited properties will also be represented.
-    - parameter object:    The instantiation of any custom class to be represented as JSON.
-    - returns: A string JSON representation of the object.
-    */
+     Generates the JSON representation given any custom object of any custom class. Inherited properties will also be represented.
+     - parameter object:    The instantiation of any custom class to be represented as JSON.
+     - returns: A string JSON representation of the object.
+     */
     public static func toJson(_ object: Any, prettify: Bool = false, ignore: [String] = []) -> String {
         var json = ""
         if (!(object is Array<Any>)) {
@@ -106,9 +106,9 @@ public class JSONSerializer {
         var filteredChildren = [(label: String?, value: Any)]()
         
         for (optionalPropertyName, value) in children {
-
+            
             if let optionalPropertyName = optionalPropertyName {
-
+                
                 if !optionalPropertyName.contains("notMapped_") {
                     filteredChildren.append((optionalPropertyName, value))
                 }
@@ -202,9 +202,9 @@ public class JSONSerializer {
                 handledValue += "["
                 for (index, value) in array.enumerated() {
                     if !(value is Int) &&
-                       !(value is Int32) &&
-                       !(value is Int64) &&
-                       !(value is Double) && !(value is Float) && !(value is Bool) && !(value is String) {
+                        !(value is Int32) &&
+                        !(value is Int64) &&
+                        !(value is Double) && !(value is Float) && !(value is Bool) && !(value is String) {
                         handledValue += toJson(value)
                     }
                     else {
@@ -215,8 +215,8 @@ public class JSONSerializer {
                 handledValue += "]"
             }
             else if property.displayStyle == Mirror.DisplayStyle.class ||
-                property.displayStyle == Mirror.DisplayStyle.struct ||
-                String(describing: value).contains("#") {
+                        property.displayStyle == Mirror.DisplayStyle.struct ||
+                        String(describing: value).contains("#") {
                 handledValue = toJson(value)
             }
             else if property.displayStyle == Mirror.DisplayStyle.optional {
@@ -266,10 +266,10 @@ public class JSONSerializer {
         }
         
         if prettify {
-           let jsonData = json.data(using: String.Encoding.utf8)!
-           let jsonObject = try! JSONSerialization.jsonObject(with: jsonData, options: [])
-           let prettyJsonData = try! JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
-           json = NSString(data: prettyJsonData, encoding: String.Encoding.utf8.rawValue)! as String
+            let jsonData = json.data(using: String.Encoding.utf8)!
+            let jsonObject = try! JSONSerialization.jsonObject(with: jsonData, options: [])
+            let prettyJsonData = try! JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
+            json = NSString(data: prettyJsonData, encoding: String.Encoding.utf8.rawValue)! as String
         }
         
         json = json.replacingOccurrences(of: ", }", with: "}")

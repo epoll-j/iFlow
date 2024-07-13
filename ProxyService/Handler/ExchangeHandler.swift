@@ -97,7 +97,7 @@ class ExchangeHandler: ChannelInboundHandler, RemovableChannelHandler {
     func channelUnregistered(context: ChannelHandlerContext) {
         context.close(mode: .all, promise: nil)
     }
-
+    
     func errorCaught(context: ChannelHandlerContext, error: Error) {
         if let channelError = error as? ChannelPipelineError {
             if channelError == .notFound && proxyContext.request!.ssl {
@@ -106,13 +106,13 @@ class ExchangeHandler: ChannelInboundHandler, RemovableChannelHandler {
         }
         
         context.channel.close(mode: .all,promise: nil)
-
+        
         if proxyContext.serverChannel!.isActive {
             _ = self.proxyContext.serverChannel!.close(mode: .all)
         }
     }
     
     func userInboundEventTriggered(context: ChannelHandlerContext, event: Any) {
-
+        
     }
 }

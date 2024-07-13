@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 import UIKit
-//import ProxyService
+import ProxyService
 
 @main
 struct debuggerApp: App {
@@ -27,7 +27,9 @@ struct debuggerApp: App {
     
     init () {
         configNavigationBar()
-//        print(ProxyService())
+        ProxyService(task: Task()).run { result in
+            print(result)
+        }
     }
     
     private func configNavigationBar() {

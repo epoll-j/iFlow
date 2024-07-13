@@ -50,7 +50,7 @@ public class Session {
     public var response_start_time: NSNumber?
     public var response_end_time: NSNumber?
     public var end_time: NSNumber?
-            
+    
     public var upload_flow: NSNumber = 0
     public var download_flow: NSNumber = 0
     
@@ -118,7 +118,7 @@ public class Session {
             print("no data !")
             return
         }
-
+        
         let fileHandle = FileHandle(forWritingAtPath: filePath!)
         if exist {
             fileHandle?.seekToEndOfFile()

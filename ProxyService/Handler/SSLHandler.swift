@@ -44,14 +44,14 @@ class SSLHandler: ChannelInboundHandler, RemovableChannelHandler {
             // is ClientHello
             proxyContext.isSSL = true
             // 通过CA证书给域名动态签发证书
-//            let host = proxyContext.request!.host
+            //            let host = proxyContext.request!.host
             let redirect = proxyContext.task.rule.redirect(ignore: proxyContext.session.ignore, request: proxyContext.request!)
             var dynamicCert = CertUtils.certPool[redirect.0]
             if dynamicCert == nil {
                 dynamicCert = CertUtils.generateSelfSignedCert(host: redirect.0)
                 CertUtils.certPool[redirect.0] = dynamicCert
             }
-
+            
             let tlsServerConfiguration = TLSConfiguration.makeServerConfiguration(certificateChain: [.certificate(dynamicCert as! NIOSSLCertificate)], privateKey: .privateKey(try! NIOSSLPrivateKey(bytes: privateKey, format: .pem)))
             let sslServerContext = try! NIOSSLContext(configuration: tlsServerConfiguration)
             let sslServerHandler = NIOSSLServerHandler(context: sslServerContext)
@@ -59,7 +59,7 @@ class SSLHandler: ChannelInboundHandler, RemovableChannelHandler {
             // 添加ssl握手处理handler
             let cancelHandshakeTask = context.channel.eventLoop.scheduleTask(in:  TimeAmount.seconds(10)) {
                 print("error:can not get server hello from MITM \(self.proxyContext.request?.host ?? "")")
-
+                
                 context.channel.close(mode: .all,promise: nil)
             }
             let aPNHandler = ApplicationProtocolNegotiationHandler(alpnCompleteHandler: { result -> EventLoopFuture<Void> in

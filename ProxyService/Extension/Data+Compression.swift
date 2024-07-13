@@ -425,10 +425,10 @@ fileprivate extension Data.CompressionAlgorithm
 {
     var lowLevelType: compression_algorithm {
         switch self {
-            case .zlib    : return COMPRESSION_ZLIB
-            case .lzfse   : return COMPRESSION_LZFSE
-            case .lz4     : return COMPRESSION_LZ4
-            case .lzma    : return COMPRESSION_LZMA
+        case .zlib    : return COMPRESSION_ZLIB
+        case .lzfse   : return COMPRESSION_LZFSE
+        case .lz4     : return COMPRESSION_LZ4
+        case .lzma    : return COMPRESSION_LZMA
         }
     }
 }
@@ -448,12 +448,12 @@ fileprivate func perform(_ config: Config, source: UnsafePointer<UInt8>, sourceS
     let status = compression_stream_init(&stream, config.operation, config.algorithm)
     guard status != COMPRESSION_STATUS_ERROR else { return nil }
     defer { compression_stream_destroy(&stream) }
-
+    
     var result = preload
     var flags: Int32 = Int32(COMPRESSION_STREAM_FINALIZE.rawValue)
     let blockLimit = 64 * 1024
     var bufferSize = Swift.max(sourceSize, 64)
-
+    
     if sourceSize > blockLimit {
         bufferSize = blockLimit
         if config.algorithm == COMPRESSION_LZFSE && config.operation != COMPRESSION_STREAM_ENCODE   {
@@ -462,7 +462,7 @@ fileprivate func perform(_ config: Config, source: UnsafePointer<UInt8>, sourceS
             flags = 0
         }
     }
-
+    
     let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufferSize)
     defer { buffer.deallocate() }
     
@@ -473,22 +473,22 @@ fileprivate func perform(_ config: Config, source: UnsafePointer<UInt8>, sourceS
     
     while true {
         switch compression_stream_process(&stream, flags) {
-            case COMPRESSION_STATUS_OK:
-                guard stream.dst_size == 0 else { return nil }
-                result.append(buffer, count: stream.dst_ptr - buffer)
-                stream.dst_ptr = buffer
-                stream.dst_size = bufferSize
-
-                if flags == 0 && stream.src_size == 0 { // part of the lzfse bugfix above
-                    flags = Int32(COMPRESSION_STREAM_FINALIZE.rawValue)
-                }
-                
-            case COMPRESSION_STATUS_END:
-                result.append(buffer, count: stream.dst_ptr - buffer)
-                return result
-                
-            default:
-                return nil
+        case COMPRESSION_STATUS_OK:
+            guard stream.dst_size == 0 else { return nil }
+            result.append(buffer, count: stream.dst_ptr - buffer)
+            stream.dst_ptr = buffer
+            stream.dst_size = bufferSize
+            
+            if flags == 0 && stream.src_size == 0 { // part of the lzfse bugfix above
+                flags = Int32(COMPRESSION_STREAM_FINALIZE.rawValue)
+            }
+            
+        case COMPRESSION_STATUS_END:
+            result.append(buffer, count: stream.dst_ptr - buffer)
+            return result
+            
+        default:
+            return nil
         }
     }
 }

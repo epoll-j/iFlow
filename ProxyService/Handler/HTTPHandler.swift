@@ -28,7 +28,7 @@ class HTTPHandler : ChannelInboundHandler, RemovableChannelHandler {
         self.connected = false
         self.proxyContext = proxyContext
     }
-
+    
     // 原始消息报文
     func channelRead(context: ChannelHandlerContext, data: NIOAny) {
         prepareProxyContext(context: context, data: data)
@@ -222,7 +222,7 @@ class HTTPHandler : ChannelInboundHandler, RemovableChannelHandler {
     func channelUnregistered(context: ChannelHandlerContext) {
         context.close(mode: .all, promise: nil)
     }
-
+    
     func errorCaught(context: ChannelHandlerContext, error: Error) {
         context.close(mode: .all, promise: nil)
         proxyContext.clientChannel?.close(mode: .all, promise: nil)

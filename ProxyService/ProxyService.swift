@@ -128,7 +128,7 @@ public class ProxyService: NSObject {
     
     public static func getStoreFolder() -> String {
         if storeFolder != "" {
-           return storeFolder
+            return storeFolder
         }
         let fileManager = FileManager.default
         let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -144,14 +144,14 @@ public class ProxyService: NSObject {
         }
         try? fileManager.createDirectory(at: storeURL, withIntermediateDirectories: true, attributes: nil)
         let fullPath = storeURL.absoluteString
-       
+        
         storeFolder = fullPath.replacingOccurrences(of: "file://", with: "")
         if storeFolder.last != "/"{
-           storeFolder = "\(storeFolder)/"
+            storeFolder = "\(storeFolder)/"
         }
-       
+        
         return storeFolder
-   }
+    }
     
     public static func getCertPath() -> URL? {
         let fileManager = FileManager.default

@@ -78,7 +78,7 @@ private class LocalSSLService {
     public func close() {
         channel?.close(mode: .all).whenSuccess({ () in
         })
-//        try? group?.syncShutdownGracefully()
+        //        try? group?.syncShutdownGracefully()
     }
 }
 
@@ -151,7 +151,7 @@ public class CheckCert {
                     }
                     print("SSL Client Close !")
                     self.sslServer?.close()
-//                    try? group.syncShutdownGracefully()
+                    //                    try? group.syncShutdownGracefully()
                 })
                 print("SSL Client Connect Success ! \(channel.remoteAddress?.description ?? "")")
                 break

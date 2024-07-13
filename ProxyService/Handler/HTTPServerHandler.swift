@@ -168,29 +168,29 @@ class HTTPServerHandler: ChannelInboundHandler {
                                                    chunkSize: 32 * 1024,
                                                    allocator: context.channel.allocator,
                                                    eventLoop: context.eventLoop) { buffer in
-                                                    if !responseStarted {
-                                                        responseStarted = true
-                                                        context.write(self.wrapOutboundOut(.head(response)), promise: nil)
-                                                    }
-                                                    return context.writeAndFlush(self.wrapOutboundOut(.body(.byteBuffer(buffer))))
-                        }.flatMap { () -> EventLoopFuture<Void> in
-                            let p = context.eventLoop.makePromise(of: Void.self)
-                            self.completeResponse(context, trailers: nil, promise: p)
-                            return p.futureResult
-                        }.flatMapError { error in
-                            if !responseStarted {
-                                let response = httpResponseHead(request: request, status: .ok)
-                                context.write(self.wrapOutboundOut(.head(response)), promise: nil)
-                                var buffer = context.channel.allocator.buffer(capacity: 100)
-                                buffer.writeString("fail: \(error)")
-                                context.write(self.wrapOutboundOut(.body(.byteBuffer(buffer))), promise: nil)
-                                self.state.responseComplete()
-                                return context.writeAndFlush(self.wrapOutboundOut(.end(nil)))
-                            } else {
-                                return context.close()
-                            }
-                        }.whenComplete { (_: Result<Void, Error>) in
-                            _ = try? file.close()
+                        if !responseStarted {
+                            responseStarted = true
+                            context.write(self.wrapOutboundOut(.head(response)), promise: nil)
+                        }
+                        return context.writeAndFlush(self.wrapOutboundOut(.body(.byteBuffer(buffer))))
+                    }.flatMap { () -> EventLoopFuture<Void> in
+                        let p = context.eventLoop.makePromise(of: Void.self)
+                        self.completeResponse(context, trailers: nil, promise: p)
+                        return p.futureResult
+                    }.flatMapError { error in
+                        if !responseStarted {
+                            let response = httpResponseHead(request: request, status: .ok)
+                            context.write(self.wrapOutboundOut(.head(response)), promise: nil)
+                            var buffer = context.channel.allocator.buffer(capacity: 100)
+                            buffer.writeString("fail: \(error)")
+                            context.write(self.wrapOutboundOut(.body(.byteBuffer(buffer))), promise: nil)
+                            self.state.responseComplete()
+                            return context.writeAndFlush(self.wrapOutboundOut(.end(nil)))
+                        } else {
+                            return context.close()
+                        }
+                    }.whenComplete { (_: Result<Void, Error>) in
+                        _ = try? file.close()
                     }
                 case .sendfile:
                     let response = responseHead(request: request, fileRegion: region, path: path)
@@ -199,10 +199,10 @@ class HTTPServerHandler: ChannelInboundHandler {
                         let p = context.eventLoop.makePromise(of: Void.self)
                         self.completeResponse(context, trailers: nil, promise: p)
                         return p.futureResult
-                        }.flatMapError { (_: Error) in
-                            context.close()
-                        }.whenComplete { (_: Result<Void, Error>) in
-                            _ = try? file.close()
+                    }.flatMapError { (_: Error) in
+                        context.close()
+                    }.whenComplete { (_: Result<Void, Error>) in
+                        _ = try? file.close()
                     }
                 }
             }

@@ -87,7 +87,7 @@ class HTTPSHandler: ChannelInboundHandler, RemovableChannelHandler {
                     self.proxyContext.session.state = -1
                     context.channel.close(mode: .all,promise: nil)
                 }
-
+                
                 if !proxyContext.session.ignore {
                     _ = context.pipeline.addHandler(SSLHandler(proxyContext: proxyContext, scheduled: cancelTask), name: "SSLHandler", position: .first)
                 } else {
@@ -116,8 +116,8 @@ class HTTPSHandler: ChannelInboundHandler, RemovableChannelHandler {
     }
     
     func errorCaught(context: ChannelHandlerContext, error: Error) {
-//        print("HTTPSHandler errorCaught:\(error.localizedDescription)")
-//        _ = context.channel.close(mode: .all)
+        //        print("HTTPSHandler errorCaught:\(error.localizedDescription)")
+        //        _ = context.channel.close(mode: .all)
         proxyContext.serverChannel?.close(mode: .all, promise: nil)
         if let cc = proxyContext.clientChannel ,cc.isActive {
             _ = cc.close(mode: .all)

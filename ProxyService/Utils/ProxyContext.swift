@@ -60,7 +60,7 @@ class ProxyContext: NSObject {
     
     var task: Task
     var session: Session
-
+    
     init(isHttp: Bool = false, task: Task) {
         self.isHttp = isHttp
         self.task = task

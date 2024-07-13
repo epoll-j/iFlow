@@ -25,7 +25,11 @@ public class Task {
     
     var createTime: NSNumber = 1
     
-    init(arg: NSDictionary) {
+    public init() {
+        
+    }
+    
+    public init(arg: NSDictionary) {
         let json = JSON(arg)
         self.id = json["taskId"].numberValue
         self.rule = TaskRule(filter: json["filter"], falsify: json["falsify"].array)

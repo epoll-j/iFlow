@@ -30,7 +30,7 @@ class TunnelProxyHandler: ChannelInboundHandler,RemovableChannelHandler {
     
     // 原始消息报文
     func channelRead(context: ChannelHandlerContext, data: NIOAny) {
-//        print("TunnelProxyHandler: \(isOut ? "-->" : "<--")")
+        //        print("TunnelProxyHandler: \(isOut ? "-->" : "<--")")
         scheduled?.cancel()
         let buf = unwrapInboundIn(data)
         if isOut {
@@ -54,7 +54,7 @@ class TunnelProxyHandler: ChannelInboundHandler,RemovableChannelHandler {
         var channelInitializer: ((Channel) -> EventLoopFuture<Void>)?
         channelInitializer = { (outChannel) -> EventLoopFuture<Void> in
             self.proxyContext.clientChannel = outChannel
-//                print("http.outChannel.pipeline:\(outChannel.pipeline)")
+            //                print("http.outChannel.pipeline:\(outChannel.pipeline)")
             return outChannel.pipeline.addHandler(TunnelProxyHandler(proxyContext: self.proxyContext, isOut: true, scheduled: nil), name: "TunnelProxyHandler")
         }
         
@@ -67,12 +67,12 @@ class TunnelProxyHandler: ChannelInboundHandler,RemovableChannelHandler {
             case .success( _):
                 self.connected = true
                 self.handleData(nil)
-//                print("outChannel.pipeline:\(outChannel.pipeline)")
+                //                print("outChannel.pipeline:\(outChannel.pipeline)")
                 break
             case .failure(let error):
                 print("outChannel connect error:\(error)")
-//                self.proxyContext.session.sstate = "failure"
-//                self.proxyContext.session.note = "\(request.host) connect error:\(error)"
+                //                self.proxyContext.session.sstate = "failure"
+                //                self.proxyContext.session.note = "\(request.host) connect error:\(error)"
                 _ = self.proxyContext.serverChannel?.close()
                 break
             }
@@ -80,8 +80,8 @@ class TunnelProxyHandler: ChannelInboundHandler,RemovableChannelHandler {
     }
     
     func handleData(_ data:ByteBuffer?) -> Void {
-//        let lock = ConditionLock(value: 0)
-//        lock.lock()
+        //        let lock = ConditionLock(value: 0)
+        //        lock.lock()
         if connected {// 发送requestDatas，然后清空requestDatas
             for rd in requestDatas{
                 _ = proxyContext.clientChannel!.writeAndFlush(rd)
@@ -94,7 +94,7 @@ class TunnelProxyHandler: ChannelInboundHandler,RemovableChannelHandler {
             guard let msg = data else {return}
             requestDatas.append(msg)
         }
-//        lock.unlock()
+        //        lock.unlock()
     }
     
     func channelUnregistered(context: ChannelHandlerContext) {
