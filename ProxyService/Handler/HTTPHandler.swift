@@ -40,16 +40,16 @@ class HTTPHandler : ChannelInboundHandler, RemovableChannelHandler {
         case .head(var head):
             head.headers = ProxyRequest.removeProxyHead(heads: head.headers)
             // 记录请求头到数据库
-            proxyContext.session.request_line = "\(head.method) \(head.uri) \(head.version)"
+            proxyContext.session.requestLine = "\(head.method) \(head.uri) \(head.version)"
             proxyContext.session.host = head.headers["Host"].first ?? proxyContext.request?.host
-            proxyContext.session.local_address = Session.getIPAddress(socketAddress: context.channel.remoteAddress)
+            proxyContext.session.localAddress = Session.getIPAddress(socketAddress: context.channel.remoteAddress)
             proxyContext.session.methods = "\(head.method)"
             proxyContext.session.uri = head.uri
-            proxyContext.session.request_http_version = "\(head.version)"
+            proxyContext.session.requestHttpVersion = "\(head.version)"
             proxyContext.session.target = Session.getUserAgent(target: head.headers["User-Agent"].first)
-            proxyContext.session.request_header = Session.getHeadsJson(headers: head.headers)
-            proxyContext.session.request_content_encoding = head.headers["Content-Encoding"].first ?? ""
-            proxyContext.session.request_content_type = head.headers["Content-Type"].first ?? ""
+            proxyContext.session.requestHeader = Session.getHeadsJson(headers: head.headers)
+            proxyContext.session.requestContentEncoding = head.headers["Content-Encoding"].first ?? ""
+            proxyContext.session.requestContentType = head.headers["Content-Type"].first ?? ""
             
             proxyContext.session.save()
             
@@ -96,7 +96,7 @@ class HTTPHandler : ChannelInboundHandler, RemovableChannelHandler {
                 let sslClientHandler = try! NIOSSLClientHandler(context: sslClientContext, serverHostname: connectHost.0.isIP() ? nil : connectHost.0)
                 let applicationProtocolNegotiationHandler = ApplicationProtocolNegotiationHandler { (result) -> EventLoopFuture<Void> in
                     self.connected = true
-                    self.proxyContext.session.handshake_time = NSNumber(value: Date().timeIntervalSince1970) //握手结束时间
+                    self.proxyContext.session.handshakeTime = Date().timeIntervalSince1970 //握手结束时间
                     return outChannel.pipeline.addHandler(HTTPRequestEncoder(), name: "HTTPRequestEncoder").flatMap({
                         outChannel.pipeline.addHandler(ByteToMessageHandler(HTTPResponseDecoder()), name: "ByteToMessageHandler").flatMap({
                             outChannel.pipeline.addHandler(ExchangeHandler(proxyContext: self.proxyContext), name: "ExchangeHandler").flatMap({
@@ -113,7 +113,7 @@ class HTTPHandler : ChannelInboundHandler, RemovableChannelHandler {
                 })
             }
         } else {
-            proxyContext.session.connect_time = NSNumber(value: Date().timeIntervalSince1970)
+            proxyContext.session.connectTime = Date().timeIntervalSince1970
             channelInitializer = { (outChannel) -> EventLoopFuture<Void> in
                 self.proxyContext.clientChannel = outChannel
                 _ = outChannel.pipeline.addHandler(ChannelWatchHandler(proxyContext: self.proxyContext), name: "ChannelWatchHandler")
@@ -129,8 +129,8 @@ class HTTPHandler : ChannelInboundHandler, RemovableChannelHandler {
         cf!.whenComplete { result in
             switch result {
             case .success(let outChannel):
-                self.proxyContext.session.connected_time = NSNumber(value: Date().timeIntervalSince1970)  // 建立连接成功
-                self.proxyContext.session.remote_address = Session.getIPAddress(socketAddress: outChannel.remoteAddress)
+                self.proxyContext.session.connectedTime = Date().timeIntervalSince1970  // 建立连接成功
+                self.proxyContext.session.remoteAddress = Session.getIPAddress(socketAddress: outChannel.remoteAddress)
                 self.proxyContext.clientChannel = outChannel
                 if !request.ssl {
                     self.connected = true
@@ -160,7 +160,7 @@ class HTTPHandler : ChannelInboundHandler, RemovableChannelHandler {
             let promise = proxyContext.clientChannel?.eventLoop.makePromise(of: Void.self)
             proxyContext.clientChannel!.writeAndFlush(HTTPClientRequestPart.end(end), promise: promise)
             promise?.futureResult.whenComplete({ (_) in
-                self.proxyContext.session.request_end_time = NSNumber(value: Date().timeIntervalSince1970)
+                self.proxyContext.session.requestEndTime = Date().timeIntervalSince1970
                 self.proxyContext.session.save()
             })
         }
@@ -168,7 +168,7 @@ class HTTPHandler : ChannelInboundHandler, RemovableChannelHandler {
             let promise = proxyContext.clientChannel?.eventLoop.makePromise(of: Void.self)
             proxyContext.clientChannel!.writeAndFlush(HTTPClientRequestPart.end(nil), promise: promise)
             promise?.futureResult.whenComplete({ (_) in
-                self.proxyContext.session.request_end_time = NSNumber(value: Date().timeIntervalSince1970)
+                self.proxyContext.session.requestEndTime = Date().timeIntervalSince1970
                 self.proxyContext.session.save()
             })
         }

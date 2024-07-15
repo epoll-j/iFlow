@@ -57,7 +57,7 @@ public class ProxyService: NSObject {
     
     public func run(_ callback: @escaping ((Result<Int, Error>) -> Void)) -> Void {
         compelete = callback
-        task.startTime = NSNumber(value: Date().timeIntervalSince1970)
+        task.startTime = Date().timeIntervalSince1970
         task.createFileFolder()
         DispatchQueue.global().async {
             self.openWifiServer(host: "0.0.0.0", port: Int(truncating: DEFAULT_PORT)) { _ in
@@ -90,7 +90,7 @@ public class ProxyService: NSObject {
     
     public func close(_ completionHandler: (() -> Void)?) -> Void {
         closed = completionHandler
-        task.stopTime = NSNumber(value: Date().timeIntervalSince1970)
+        task.stopTime = Date().timeIntervalSince1970
         
         if let callback = completionHandler {
             callback()

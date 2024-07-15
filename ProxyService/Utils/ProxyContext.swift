@@ -21,7 +21,7 @@ class ProxyContext: NSObject {
                     print("******\(self.request?.host ?? "") clientChannel close error ! \(error.localizedDescription)")
                     break
                 case .success(_):
-                    self.session.end_time = NSNumber(value: Date().timeIntervalSince1970)
+                    self.session.endTime = Date().timeIntervalSince1970
                     self.session.save()
                     self.serverChannel?.close(mode: .all, promise: nil)
                     break
@@ -43,7 +43,7 @@ class ProxyContext: NSObject {
                     print("******\(self.request?.host ?? "") serverChannel close error ! \(error.localizedDescription)")
                     break
                 case .success(_):
-                    self.session.end_time = NSNumber(value: Date().timeIntervalSince1970)
+                    self.session.endTime = Date().timeIntervalSince1970
                     self.session.save()
                     break
                 }

@@ -58,15 +58,15 @@ class HTTPSHandler: ChannelInboundHandler, RemovableChannelHandler {
                 // 移除代理相关头
                 head.headers = ProxyRequest.removeProxyHead(heads: head.headers)
                 // 填充数据到session
-                proxyContext.session.request_line = "\(head.method) \(head.uri) \(head.version)"
+                proxyContext.session.requestLine = "\(head.method) \(head.uri) \(head.version)"
                 proxyContext.session.host = req.host
-                proxyContext.session.local_address = Session.getIPAddress(socketAddress: context.channel.remoteAddress)
+                proxyContext.session.localAddress = Session.getIPAddress(socketAddress: context.channel.remoteAddress)
                 proxyContext.session.methods = "\(head.method)"
                 proxyContext.session.uri = head.uri
-                proxyContext.session.request_http_version = "\(head.version)"
+                proxyContext.session.requestHttpVersion = "\(head.version)"
                 proxyContext.session.target = Session.getUserAgent(target: head.headers["User-Agent"].first)
-                proxyContext.session.request_header = Session.getHeadsJson(headers: head.headers)
-                proxyContext.session.connect_time = NSNumber(value: Date().timeIntervalSince1970)// 开始建立连接
+                proxyContext.session.requestHeader = Session.getHeadsJson(headers: head.headers)
+                proxyContext.session.connectTime = Date().timeIntervalSince1970 // 开始建立连接
                 
                 
                 // 必须加个content-length:0 不然会自动添加transfer-encoding:chunked,导致部分设备无法识别，坑

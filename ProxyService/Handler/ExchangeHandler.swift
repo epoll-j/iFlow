@@ -25,17 +25,17 @@ class ExchangeHandler: ChannelInboundHandler, RemovableChannelHandler {
         let res = self.unwrapInboundIn(data)
         switch res {
         case .head(let head):
-            proxyContext.session.response_start_time = NSNumber(value: Date().timeIntervalSince1970) // 开始接收响应
-            proxyContext.session.response_http_version = "\(head.version)"
-            proxyContext.session.http_code = "\(head.status.code)"
-            proxyContext.session.response_msg = head.status.reasonPhrase
+            proxyContext.session.responseStartTime = Date().timeIntervalSince1970 // 开始接收响应
+            proxyContext.session.responseHttpVersion = "\(head.version)"
+            proxyContext.session.httpCode = "\(head.status.code)"
+            proxyContext.session.responseMsg = head.status.reasonPhrase
             let contentType = head.headers["Content-Type"].first ?? ""
-            proxyContext.session.response_content_type = contentType
+            proxyContext.session.responseContentType = contentType
             if let ss = contentType.components(separatedBy: ";").first {
                 proxyContext.session.suffix = ss.components(separatedBy: "/").last ?? ""
             }
-            proxyContext.session.response_content_encoding = head.headers["Content-Encoding"].first ?? ""
-            proxyContext.session.response_header = Session.getHeadsJson(headers: head.headers)//
+            proxyContext.session.responseContentEncoding = head.headers["Content-Encoding"].first ?? ""
+            proxyContext.session.responseHeader = Session.getHeadsJson(headers: head.headers)//
             proxyContext.session.save()
             _ = proxyContext.serverChannel?.writeAndFlush(HTTPServerResponsePart.head(head))
         case .body(let body):
@@ -58,7 +58,7 @@ class ExchangeHandler: ChannelInboundHandler, RemovableChannelHandler {
                 }
                 let nameSplit = proxyContext.session.fileName.components(separatedBy: ".")
                 if nameSplit.count < 2 {
-                    let type = proxyContext.session.response_content_type!.getRealType()
+                    let type = proxyContext.session.responseContentType!.getRealType()
                     if !type.isEmpty {
                         proxyContext.session.fileName = "\(proxyContext.session.fileName).\(type)"
                         proxyContext.session.save()
@@ -69,7 +69,7 @@ class ExchangeHandler: ChannelInboundHandler, RemovableChannelHandler {
             
             proxyContext.session.writeBody(type: .Response, buffer: body, realName: proxyContext.session.fileName)
         case .end(let tailHeaders):
-            proxyContext.session.response_end_time = NSNumber(value: Date().timeIntervalSince1970) // 接收完毕响应
+            proxyContext.session.responseEndTime = Date().timeIntervalSince1970 // 接收完毕响应
             proxyContext.session.save()
             gotEnd = true
             proxyContext.session.writeBody(type: .Response, buffer: nil, realName: proxyContext.session.fileName)
