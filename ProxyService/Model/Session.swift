@@ -8,17 +8,17 @@
 import Foundation
 import NIOCore
 import NIOHTTP1
-import SwiftData
+import RealmSwift
+import SwiftyJSON
 
 public enum FileType {
     case Request
     case Response
 }
 
-@Model
-public class Session {
-    public var id: UUID = UUID()
-    public var task_id: UUID!
+public class Session: Codable {
+    public var id: String = UUID().uuidString
+    public var taskId: String?
     public var remoteAddress: String?
     public var localAddress: String?
     public var host: String?
@@ -56,36 +56,45 @@ public class Session {
     public var uploadFlow: Int = 0
     public var downloadFlow: Int = 0
     
+    public var fileFolder = ""
+    public var fileName = ""
+    
     public var state: Int = 1
     public var note: String?
     
     public var ignore = false
     
-    public let random = arc4random()
-    
-    public var fileFolder = ""
-    public var fileName = ""
-    
-    public init() {
+    init() {
         
     }
     
     public static func newSession(_ task: Task) -> Session {
         let session = Session()
-        session.task_id = task.id
+        session.taskId = task.id
         session.startTime = Date().timeIntervalSince1970
         session.fileFolder = task.fileFolder
+        task.sessions.insert(session.id)
+        task.save()
         return session
     }
     
     
     public func save() {
-//        if self.ignore {
-//            return
-//        }
-//        DispatchQueue.main.async {
-//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "save_session"), object: JSONSerializer.toJson(self, ignore: ["fileName", "fileFolder"]))
-//        }
+        if self.ignore {
+            return
+        }
+        DispatchQueue.main.async {
+            let realm = RealmManager.shared
+            if let jsonData = try? JSONEncoder().encode(self) {
+                if let jsonObject = try? JSONSerialization.jsonObject(with: jsonData, options: []),
+                   let dictionary = jsonObject as? [String: Any] {
+                    try? realm.write({
+                        realm.add(SessionModel(value: dictionary), update: .modified)
+                    })
+                }
+            }
+            
+        }
     }
     
     public func writeBody(type: FileType, buffer: ByteBuffer?, realName: String = "") {
@@ -94,10 +103,10 @@ public class Session {
         }
         
         if requestBody == nil, type == .Request {
-            requestBody = "req_\(task_id.uuidString)_\(random)\(realName)"
+            requestBody = "req_\(taskId!)_\(id)\(realName)"
         }
         if responseBody == nil, type == .Response {
-            responseBody = "rsp_\(task_id.uuidString)_\(random)\(realName)"
+            responseBody = "rsp_\(taskId!)_\(id)\(realName)"
         }
         guard let body = buffer else {
             return
@@ -153,3 +162,56 @@ public class Session {
         NotificationCenter.default.removeObserver(self)
     }
 }
+
+
+public class SessionModel: Object, ObjectKeyIdentifiable {
+    @Persisted(primaryKey: true) public var id: String
+    @Persisted public var taskId: String!
+    @Persisted public var remoteAddress: String?
+    @Persisted public var localAddress: String?
+    @Persisted public var host: String?
+    @Persisted public var schemes: String?
+    @Persisted public var requestLine: String?
+    @Persisted public var methods: String?
+    @Persisted public var uri: String?
+    @Persisted public var suffix: String?
+    
+    @Persisted public var requestContentType: String?
+    @Persisted public var requestContentEncoding: String?
+    @Persisted public var requestHeader: String?
+    @Persisted public var requestHttpVersion: String?
+    @Persisted public var requestBody: String?
+    
+    @Persisted public var target: String?
+    @Persisted public var httpCode: String?
+    
+    @Persisted public var responseContentType: String?
+    @Persisted public var responseContentEncoding: String?
+    @Persisted public var responseHeader: String?
+    @Persisted public var responseHttpVersion: String?
+    @Persisted public var responseBody: String?
+    @Persisted public var responseMsg: String?
+    
+    @Persisted public var startTime: Double?
+    @Persisted public var connectTime: Double?
+    @Persisted public var connectedTime: Double?
+    @Persisted public var handshakeTime: Double?
+    @Persisted public var requestEndTime: Double?
+    @Persisted public var responseStartTime: Double?
+    @Persisted public var responseEndTime: Double?
+    @Persisted public var endTime: Double?
+    
+    @Persisted public var uploadFlow: Int = 0
+    @Persisted public var downloadFlow: Int = 0
+    
+    @Persisted public var fileFolder = ""
+    @Persisted public var fileName = ""
+    
+    @Persisted public var state: Int = 1
+    @Persisted public var note: String?
+    
+    public override init() {
+        
+    }
+}
+

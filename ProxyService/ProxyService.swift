@@ -52,7 +52,7 @@ public class ProxyService: NSObject {
     }
     
     public static func create(_ arg: NSDictionary) -> ProxyService? {
-        return ProxyService(task: Task(arg: arg))
+        return ProxyService(task: Task())
     }
     
     public func run(_ callback: @escaping ((Result<Int, Error>) -> Void)) -> Void {
