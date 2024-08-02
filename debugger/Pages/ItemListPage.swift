@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import RealmSwift
+import ProxyService
 
 struct DetailItem: Identifiable {
     let id = UUID()
@@ -13,33 +15,38 @@ struct DetailItem: Identifiable {
 }
 
 struct ItemListPage: View {
-    let items = ["1", "2", "3"]
-    
+
+    let taskId: String
+    @ObservedResults(SessionModel.self) var sessions
     @State private var selectedItem: DetailItem?
+    
+    init(taskId: String) {
+        self.taskId = taskId
+    }
     
     var body: some View {
         List {
-            ForEach(items, id: \.self) { item in
+            ForEach(sessions.where(({$0.taskId == self.taskId})), id: \.self) { item in
                 VStack(spacing: 10) {
                     HStack() {
-                        Text("www.baidu.com").font(.body).bold()
-                        Spacer()
-                        Text("/query")
+                        Text(item.host!).lineLimit(1).truncationMode(.middle).font(.body).bold()
+                        Spacer(minLength: 30)
+                        Text(item.uri!).lineLimit(1).truncationMode(.middle)
                     }
                     .frame(maxWidth: .infinity)
                     HStack() {
-                        Text("GET").font(.body).bold()
-                        Text("200").font(.body).foregroundStyle(.green).bold()
+                        Text(item.methods ?? "-").font(.body)
+                        Text(item.httpCode ?? "-").font(.body).foregroundStyle(_getHttpCodeColor(item))
                         Spacer()
-                        Text("2020-01-02 22:22:22").font(.body).foregroundStyle(.gray)
+                        Text(item.startTime?.formattedDate() ?? "-").font(.body).foregroundStyle(.gray)
                     }
                     .frame(maxWidth: .infinity)
                     HStack() {
-                        Text("#1").font(.body).bold()
+                        Text("#\(item.id.prefix(4))").font(.footnote).foregroundStyle(.gray)
                         Spacer()
-                        Text("JSON").font(.body).bold()
-                        Text("1mb")
-                        Text("1ms")
+                        Text(item.suffix ?? "-").font(.body)
+                        Text(_getFlowText(item))
+                        Text(_getTimeText(item))
                     }
                     .frame(maxWidth: .infinity)
                 }
@@ -53,8 +60,41 @@ struct ItemListPage: View {
             }
         }
     }
+    
+    private func _getFlowText(_ item: SessionModel) -> String {
+        let units = ["b", "kb", "mb", "gb"]
+        var unitIndex = 0
+        var byte = item.downloadFlow
+        while (byte >= 1024 && unitIndex < units.count - 1) {
+            byte /= 1024;
+            unitIndex += 1;
+        }
+        return "\(byte)\(units[unitIndex])"
+    }
+    
+    private func _getHttpCodeColor(_ item: SessionModel) -> any ShapeStyle {
+        if (item.httpCode == nil) {
+            return .red
+        }
+        if (item.httpCode!.starts(with: "2")) {
+            return .green
+        }
+        if (item.httpCode!.starts(with: "3")) {
+            return .blue
+        }
+        
+        return .red
+    }
+    
+    private func _getTimeText(_ item: SessionModel) -> String {
+        if (item.startTime == nil || item.endTime == nil) {
+            return "-"
+        }
+        let total = item.endTime! - item.startTime!
+        return "\(Int(total))ms"
+    }
 }
 
 #Preview {
-    ItemListPage()
+    ItemListPage(taskId: "")
 }

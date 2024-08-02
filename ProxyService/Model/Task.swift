@@ -51,7 +51,17 @@ public class Task {
         }
     }
     
-    func save() {
+    public func updateTime() {
+        DispatchQueue.main.async {
+            let realm = RealmManager.shared
+            let task = realm.object(ofType: TaskModel.self, forPrimaryKey: self.id)
+            try? realm.write {
+                task?.stopTime = Date().timeIntervalSince1970
+            }
+        }
+    }
+    
+    public func save() {
         DispatchQueue.main.async {
             let realm = RealmManager.shared
             try? realm.write {
@@ -79,5 +89,17 @@ public class TaskModel: Object, ObjectKeyIdentifiable {
     
     public override init() {
         
+    }
+    
+    public func removeAllSessions() {
+        DispatchQueue.main.async {
+            let realm = RealmManager.shared
+            let del = realm.objects(SessionModel.self).filter { model in
+                return model.taskId == self.id
+            }
+            try? realm.write({
+                realm.delete(del)
+            })
+        }
     }
 }

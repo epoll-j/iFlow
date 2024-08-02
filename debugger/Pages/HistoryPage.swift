@@ -16,15 +16,14 @@ struct HistoryPage: View {
         List {
             ForEach(tasks, id: \.self) { item in
                 NavigationLink {
-                    ItemListPage()
-                        .navigationBarTitle("123", displayMode: .large)
+                    ItemListPage(taskId: item.id)
+                        .navigationBarTitle("#\(item.id.prefix(4))", displayMode: .large)
                 } label: {
                     VStack(spacing: 20) {
                         HStack() {
                             Text("#\(item.id.prefix(4))").font(.body).bold()
                             Spacer()
                             Text("\(item.startTime.formattedDate())")
-                            //                                Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
                         }
                         .frame(maxWidth: .infinity)
                         HStack() {
@@ -36,11 +35,14 @@ struct HistoryPage: View {
                     }.frame(maxWidth: .infinity)
                 }
             }
-            .onDelete(perform: deleteItems)
+            .onDelete(perform: _deleteItems)
         }.navigationBarTitle(Text("历史记录"), displayMode: .large)
     }
     
-    private func deleteItems(offsets: IndexSet) {
+    private func _deleteItems(offsets: IndexSet) {
+        for index in offsets {
+            tasks[index].removeAllSessions()
+        }
         withAnimation {
             $tasks.remove(atOffsets: offsets)
         }

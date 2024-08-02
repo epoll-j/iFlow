@@ -62,7 +62,20 @@ public class Session: Codable {
     public var state: Int = 1
     public var note: String?
     
-    public var ignore = false
+    private var _ignore = false
+    public var ignore: Bool {
+        set(newVal) {
+            _ignore = newVal
+            if (!newVal) {
+                self._addSessionCount()
+            }
+        }
+        
+        get {
+            return _ignore
+        }
+    }
+    
     
     init() {
         
@@ -73,11 +86,18 @@ public class Session: Codable {
         session.taskId = task.id
         session.startTime = Date().timeIntervalSince1970
         session.fileFolder = task.fileFolder
-        task.sessions.insert(session.id)
-        task.save()
         return session
     }
     
+    private func _addSessionCount() {
+        DispatchQueue.main.async {
+            let realm = RealmManager.shared
+            let task = realm.object(ofType: TaskModel.self, forPrimaryKey: self.taskId)
+            try? realm.write {
+                task?.sessionsCount += 1
+            }
+        }
+    }
     
     public func save() {
         if self.ignore {
