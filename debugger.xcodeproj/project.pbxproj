@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		465C43A32BDF3E82002EFB48 /* ParamDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465C43A22BDF3E82002EFB48 /* ParamDetail.swift */; };
 		465C43A52BDF3F02002EFB48 /* ResponseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465C43A42BDF3F02002EFB48 /* ResponseDetail.swift */; };
+		4677596A2C5F16C4005517FE /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467759692C5F16C4005517FE /* Double.swift */; };
 		467EB18A2BDBA91F00828795 /* DetailContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EB1892BDBA91F00828795 /* DetailContent.swift */; };
 		467EB18C2BDBAF7A00828795 /* HeaderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EB18B2BDBAF7A00828795 /* HeaderDetail.swift */; };
 		467EB18F2BDBB07B00828795 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EB18E2BDBB07B00828795 /* Color.swift */; };
@@ -138,6 +139,7 @@
 /* Begin PBXFileReference section */
 		465C43A22BDF3E82002EFB48 /* ParamDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParamDetail.swift; sourceTree = "<group>"; };
 		465C43A42BDF3F02002EFB48 /* ResponseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDetail.swift; sourceTree = "<group>"; };
+		467759692C5F16C4005517FE /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		467EB1892BDBA91F00828795 /* DetailContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContent.swift; sourceTree = "<group>"; };
 		467EB18B2BDBAF7A00828795 /* HeaderDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderDetail.swift; sourceTree = "<group>"; };
 		467EB18E2BDBB07B00828795 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				467EB18E2BDBB07B00828795 /* Color.swift */,
+				467759692C5F16C4005517FE /* Double.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				467EB18F2BDBB07B00828795 /* Color.swift in Sources */,
 				465C43A32BDF3E82002EFB48 /* ParamDetail.swift in Sources */,
 				469AD5992BC7C370007C43C6 /* HistoryPage.swift in Sources */,
+				4677596A2C5F16C4005517FE /* Double.swift in Sources */,
 				467EB18A2BDBA91F00828795 /* DetailContent.swift in Sources */,
 				46ABADBE2BC5827A00EF3295 /* debuggerApp.swift in Sources */,
 				467EB18C2BDBAF7A00828795 /* HeaderDetail.swift in Sources */,
